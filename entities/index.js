@@ -9,9 +9,11 @@ const windowsHeight = Dimensions.get('window').height;
 const windowsWidth = Dimensions.get('window').width;
 
 export default (restart) => {
+  let obstacleImageBottom = require('../assets/pipe-green.png');
+  let obstacleImageTop = require('../assets/pipe-green-opposite.png');
   let engine = Matter.Engine.create({ enableSleeping: false });
 
-  engine.gravity.y = 0.4;
+  engine.gravity.y = 0.6;
   let world = engine.world;
 
   const pipeSizePosA = getPipeSizePosPair();
@@ -25,34 +27,38 @@ export default (restart) => {
       'ObstacleTop1',
       'red',
       pipeSizePosA.pipeTop.pos,
-      pipeSizePosA.pipeTop.size
+      pipeSizePosA.pipeTop.size,
+      obstacleImageTop
     ),
     ObstacleBottom1: Obstacle(
       world,
       'ObstacleBottom1',
-      'blue',
+      '',
       pipeSizePosA.pipeBottom.pos,
-      pipeSizePosA.pipeBottom.size
+      pipeSizePosA.pipeBottom.size,
+      obstacleImageBottom
     ),
     ObstacleTop2: Obstacle(
       world,
       'ObstacleTop2',
       'red',
       pipeSizePosB.pipeTop.pos,
-      pipeSizePosB.pipeTop.size
+      pipeSizePosB.pipeTop.size,
+      obstacleImageTop
     ),
     ObstacleBottom2: Obstacle(
       world,
       'ObstacleBottom2',
-      'blue',
+      '',
       pipeSizePosB.pipeBottom.pos,
-      pipeSizePosB.pipeBottom.size
+      pipeSizePosB.pipeBottom.size,
+      obstacleImageBottom
     ),
     Floor: Floor(
       world,
       'green',
       { x: windowsWidth / 2, y: windowsHeight },
-      { height: 50, width: windowsWidth }
+      { height: 150, width: windowsWidth }
     ),
   };
 };

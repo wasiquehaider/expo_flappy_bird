@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Image } from 'react-native';
 import Matter from 'matter-js';
 
 const Bird = (props) => {
@@ -14,15 +14,23 @@ const Bird = (props) => {
   return (
     <View
       style={{
-        backgroundColor: color,
+        // backgroundColor: color,
         borderStyle: 'solid',
         position: 'absolute',
         left: xBody,
         top: yBody,
         width: widthBody,
         height: heightBody,
+        justifyContent: 'center',
+        alignItems: 'center',
       }}
-    ></View>
+    >
+      <Image
+        source={require('../assets/yellowbird.png')}
+        style={{ width: widthBody, height: heightBody }}
+        resizeMode='contain'
+      />
+    </View>
   );
 };
 

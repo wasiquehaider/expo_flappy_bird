@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Image } from 'react-native';
 import Matter from 'matter-js';
 
 const Floor = (props) => {
@@ -22,7 +22,13 @@ const Floor = (props) => {
         width: widthBody,
         height: heightBody,
       }}
-    ></View>
+    >
+      <Image
+        source={require('../assets/base.png')}
+        style={{ width: widthBody, height: heightBody }}
+        resizeMode='stretch'
+      />
+    </View>
   );
 };
 

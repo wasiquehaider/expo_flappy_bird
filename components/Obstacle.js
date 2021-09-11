@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Image } from 'react-native';
 import Matter from 'matter-js';
 
 const Obstacle = (props) => {
@@ -10,6 +10,7 @@ const Obstacle = (props) => {
   const yBody = props.body.position.y - heightBody / 2;
 
   const color = props.color;
+  const imageName = props.imageName;
 
   return (
     <View
@@ -22,11 +23,17 @@ const Obstacle = (props) => {
         width: widthBody,
         height: heightBody,
       }}
-    ></View>
+    >
+      <Image
+        source={imageName}
+        style={{ width: widthBody }}
+        resizeMode='stretch'
+      />
+    </View>
   );
 };
 
-export default (world, label, color, pos, size) => {
+export default (world, label, color, pos, size, imageName) => {
   const initialObstacle = Matter.Bodies.rectangle(
     pos.x,
     pos.y,
@@ -40,6 +47,7 @@ export default (world, label, color, pos, size) => {
     body: initialObstacle,
     color,
     pos,
+    imageName,
     renderer: <Obstacle />,
   };
 };
