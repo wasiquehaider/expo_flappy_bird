@@ -20,3 +20,7 @@ export const getPipeSizePosPair = (addToPosX = 0) => {
 
   return { pipeTop, pipeBottom };
 };
+
+export const getImageNumbers = (number) => {
+  return String(number).split('');
+};

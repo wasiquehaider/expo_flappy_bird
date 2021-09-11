@@ -12,9 +12,51 @@ import {
 import { GameEngine } from 'react-native-game-engine';
 import entities from './entities';
 import Physics from './physics';
+import { getImageNumbers } from './utils/random';
 
 const APP_WIDTH = Dimensions.get('window').width;
 const APP_HEIGHT = Dimensions.get('window').height;
+
+const images = {
+  0: require('./assets/numbers/0.png'),
+  1: require('./assets/numbers/1.png'),
+  2: require('./assets/numbers/2.png'),
+  3: require('./assets/numbers/3.png'),
+  4: require('./assets/numbers/4.png'),
+  5: require('./assets/numbers/5.png'),
+  6: require('./assets/numbers/6.png'),
+  7: require('./assets/numbers/7.png'),
+  8: require('./assets/numbers/8.png'),
+  9: require('./assets/numbers/9.png'),
+};
+
+const ShowImages = ({ points }) => {
+  let imagesArr = getImageNumbers(points);
+  return (
+    <View
+      style={{
+        width: APP_WIDTH,
+        height: 50,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        zIndex: 999,
+      }}
+    >
+      {imagesArr.map((item) => {
+        return (
+          <Image
+            source={images[item]}
+            style={{
+              width: 24,
+              height: 50,
+            }}
+            resizeMode='center'
+          />
+        );
+      })}
+    </View>
+  );
+};
 
 export default function App() {
   const [running, setRunning] = useState(false);
@@ -25,13 +67,14 @@ export default function App() {
     setRunning(false);
     setGameType('new_game');
   }, []);
+
   return (
     <View style={styles.container}>
       <Image
         source={require('./assets/background.png')}
         style={{ width: APP_WIDTH, height: APP_HEIGHT, position: 'absolute' }}
       />
-      <Text
+      {/* <Text
         style={{
           textAlign: 'center',
           fontSize: 40,
@@ -41,7 +84,8 @@ export default function App() {
         }}
       >
         {currentPoints}
-      </Text>
+      </Text> */}
+      <ShowImages points={currentPoints} />
       <GameEngine
         ref={(ref) => {
           setGameEngine(ref);
