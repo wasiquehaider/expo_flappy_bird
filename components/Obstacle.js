@@ -15,7 +15,7 @@ const Obstacle = (props) => {
   return (
     <View
       style={{
-        backgroundColor: color,
+        // backgroundColor: color,
         borderStyle: 'solid',
         position: 'absolute',
         left: xBody,
@@ -26,7 +26,10 @@ const Obstacle = (props) => {
     >
       <Image
         source={imageName}
-        style={{ width: widthBody }}
+        style={{
+          width: widthBody,
+          height: heightBody,
+        }}
         resizeMode='stretch'
       />
     </View>
