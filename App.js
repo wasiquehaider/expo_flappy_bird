@@ -42,9 +42,10 @@ const ShowImages = ({ points }) => {
         zIndex: 999,
       }}
     >
-      {imagesArr.map((item) => {
+      {imagesArr.map((item, index) => {
         return (
           <Image
+            key={index}
             source={images[item]}
             style={{
               width: 24,
@@ -74,17 +75,6 @@ export default function App() {
         source={require('./assets/background.png')}
         style={{ width: APP_WIDTH, height: APP_HEIGHT, position: 'absolute' }}
       />
-      {/* <Text
-        style={{
-          textAlign: 'center',
-          fontSize: 40,
-          fontWeight: 'bold',
-          margin: 20,
-          zIndex: 999,
-        }}
-      >
-        {currentPoints}
-      </Text> */}
       <ShowImages points={currentPoints} />
       <GameEngine
         ref={(ref) => {
